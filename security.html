@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Security Check</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #0f172a; color: white; }
+        .card { text-align: center; padding: 2rem; border-radius: 12px; background: #1e293b; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        #banned-ui { display: none; color: #f87171; }
+        .spinner { border: 4px solid rgba(255, 255, 255, 0.1); width: 36px; height: 36px; border-radius: 50%; border-left-color: #38bdf8; animation: spin 1s linear infinite; margin: 0 auto 20px; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div id="checking-ui">
+            <div class="spinner"></div>
+            <h2>Checking Security...</h2>
+            <p>Please wait a moment.</p>
+        </div>
+
+        <div id="banned-ui">
+            <h1 style="font-size: 50px;">🚫</h1>
+            <h2>Access Denied</h2>
+            <p>Your IP address is on our block list.</p>
+        </div>
+    </div>
+
+    <script>
+        const SUPABASE_URL = "https://zxskuyaftzzimvvsjsbx.supabase.co";
+        const SUPABASE_KEY = "sb_publishable_oCSD2HckHpY2I9RbVU9kKg_mnmnqQs5";
+        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        async function gatekeeper() {
+            try {
+                // 1. Get Visitor IP
+                const res = await fetch('https://api.ipify.org?format=json');
+                const { ip } = await res.json();
+
+                // 2. Check Blacklist
+                const { data: banned } = await _supabase
+                    .from('banned_ips')
+                    .select('ip_address')
+                    .eq('ip_address', ip)
+                    .single();
+
+                if (banned) {
+                    // Log blocked attempt for Owner Dashboard
+                    await _supabase.from('login_activity').insert([{ ip_address: ip, status: 'blocked' }]);
+                    
+                    // Show the Banned UI and stop
+                    document.getElementById('checking-ui').style.display = 'none';
+                    document.getElementById('banned-ui').style.display = 'block';
+                } else {
+                    // 3. IF NOT BANNED: Log success and Redirect
+                    await _supabase.from('login_activity').insert([{ ip_address: ip, status: 'allowed' }]);
+                    
+                    // Send them to message.html
+                    window.location.href = "message.html";
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                document.getElementById('checking-ui').innerHTML = "<h2>System Error</h2><p>Please check your connection.</p>";
+            }
+        }
+
+        gatekeeper();
+    </script>
+</body>
+</html>
+
