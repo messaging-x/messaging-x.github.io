@@ -2,37 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>MessageX - Comprehensive User Agreement</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MessageX | Comprehensive User Agreement</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f172a; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .box { background: #1e293b; padding: 40px; border-radius: 12px; max-width: 600px; text-align: center; border: 1px solid #334155; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-        h2 { color: #38bdf8; margin-top: 0; font-size: 24px; letter-spacing: 0.5px; }
-        p { color: #94a3b8; font-size: 14px; margin-bottom: 20px; }
+        :root { --accent: #38bdf8; --bg: #0f172a; --card: #1e293b; --text: #f8fafc; --muted: #94a3b8; }
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; box-sizing: border-box; }
+        .box { background: var(--card); padding: 40px; border-radius: 16px; max-width: 700px; width: 100%; text-align: center; border: 1px solid #334155; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+        h2 { color: var(--accent); margin: 0 0 10px 0; font-size: 28px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.5px; }
+        .sub { color: var(--muted); font-size: 14px; margin-bottom: 25px; }
         
         .terms { 
-            text-align: left; background: #0f172a; padding: 20px; border-radius: 8px; 
-            font-size: 12px; line-height: 1.8; height: 350px; overflow-y: scroll; 
-            margin-bottom: 25px; border: 1px solid #334155; color: #cbd5e1; 
+            text-align: left; background: #0b1222; padding: 30px; border-radius: 12px; 
+            font-size: 13px; line-height: 1.7; height: 400px; overflow-y: scroll; 
+            margin-bottom: 30px; border: 1px solid #334155; color: #cbd5e1;
         }
-        .terms strong { color: #38bdf8; display: block; margin-top: 15px; text-transform: uppercase; font-size: 11px; }
+        .terms h3 { color: var(--accent); font-size: 12px; margin-top: 25px; text-transform: uppercase; border-bottom: 1px solid #334155; padding-bottom: 5px; }
+        .terms p { margin: 10px 0; }
 
-        /* Disabled State */
         button { 
-            background: #334155; color: #94a3b8; border: none; padding: 16px 24px; 
-            border-radius: 6px; font-weight: bold; cursor: not-allowed; width: 100%; 
-            transition: 0.3s; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; 
+            background: #334155; color: var(--muted); border: none; padding: 18px 30px; 
+            border-radius: 8px; font-weight: 700; cursor: not-allowed; width: 100%; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); font-size: 15px; 
+            text-transform: uppercase; letter-spacing: 1px; 
         }
 
-        /* Active State */
-        button.active { 
-            background: #38bdf8; color: #0f172a; cursor: pointer; 
-        }
-        button.active:hover { 
-            background: #7dd3fc; box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); 
-        }
+        button.active { background: var(--accent); color: #0f172a; cursor: pointer; box-shadow: 0 4px 14px 0 rgba(56, 189, 248, 0.39); }
+        button.active:hover { background: #7dd3fc; transform: translateY(-2px); }
 
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
     </style>
 </head>
@@ -40,69 +39,94 @@
 
 <div class="box">
     <h2>End User License Agreement</h2>
-    <p id="instruction">Please scroll to the bottom to accept the terms.</p>
+    <p class="sub" id="instruction">Please review the following document to continue.</p>
+    
     <div class="terms" id="termsBox">
-        <strong>1. Introduction</strong>
-        This End User License Agreement ("Agreement") is a legal agreement between you and MessageX. By clicking "I AGREE," or by accessing the platform, you acknowledge that you have read, understood, and agreed to be bound by the terms herein. This platform is provided strictly for communication purposes under the limitations defined below.
+        <p><strong>Last Updated: May 2026</strong></p>
+        <p>This End User License Agreement ("Agreement") governs your use of the MessageX platform. Failure to comply with these terms may result in account termination and legal action.</p>
 
-        <strong>2. Eligibility and Access</strong>
-        You represent and warrant that you are at least 18 years of age and possess the legal authority to enter into this agreement. Access to certain features may require the creation of a user profile. You are solely responsible for maintaining the confidentiality of your credentials and for all activities that occur under your account.
+        <h3>1. Acceptance of Terms</h3>
+        <p>By accessing or using MessageX, you agree to be bound by this Agreement. If you do not agree, you are prohibited from using the service.</p>
 
-        <strong>3. Proprietary Rights</strong>
-        All software, algorithms, graphics, and interface designs are the exclusive property of MessageX and its licensors. No part of the platform may be reverse-engineered, decompiled, or disassembled without express written permission. Unauthorized use of MessageX trademarks is strictly prohibited.
+        <h3>2. Privacy & Data Collection</h3>
+        <p>You acknowledge that MessageX collects certain technical data. <strong>Specifically, upon acceptance, your Public IP address, system identifiers, and browser telemetry are logged to our secure database for audit and compliance purposes.</strong></p>
 
-        <strong>4. User-Generated Content</strong>
-        MessageX acts as a passive conduit for the distribution and publication of user-generated content. We do not monitor, verify, or endorse any content posted by users. You grant MessageX a perpetual, irrevocable, worldwide license to host and transmit any content you upload for the purposes of operating the service.
+        <h3>3. Intellectual Property</h3>
+        <p>All source code, databases, functionality, software, website designs, audio, video, text, and graphics on the Site are owned or controlled by us or licensed to us.</p>
 
-        <strong>5. Acceptable Use Policy</strong>
-        Users agree not to use the service for any unlawful activities, including but not limited to harassment, distribution of malware, or infringement of intellectual property. We reserve the right to terminate access immediately for any violation of these standards without prior notice.
+        <h3>4. Prohibited Activities</h3>
+        <p>You may not access or use the Site for any purpose other than that for which we make the Site available. Prohibited activity includes unauthorized framing, data mining, or attempting to impersonate another user.</p>
 
-        <strong>6. Service Availability</strong>
-        While we strive for 99.9% uptime, MessageX is provided "AS IS" and "AS AVAILABLE." We do not guarantee that the service will be uninterrupted or error-free. Maintenance windows may occur at any time, and we are not liable for any data loss during these periods.
+        <h3>5. Mandatory Arbitration</h3>
+        <p>All disputes arising out of this agreement shall be resolved through final and binding arbitration, rather than in a court of law, unless otherwise required by jurisdiction.</p>
 
-        <strong>7. Network Security and Telemetry Logging</strong>
-        To ensure the safety of our global network and to mitigate Distributed Denial of Service (DDoS) threats, MessageX employs advanced session tracking. <strong>By proceeding, you provide your irrevocable consent for our systems to log your public IP address, geolocation data, ISP headers, and device identifiers.</strong> This information is cross-referenced with global threat databases to ensure your connection is secure.
+        <h3>6. Limitation of Liability</h3>
+        <p>MESSAGEX AND ITS DIRECTORS SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, CONSEQUENTIAL, OR EXEMPLARY DAMAGES RESULTING FROM YOUR USE OF THE SERVICE.</p>
 
-        <strong>8. Indemnification</strong>
-        You agree to defend, indemnify, and hold harmless MessageX, its parent company, officers, and employees from and against any and all claims, damages, obligations, losses, liabilities, costs, or debt, and expenses arising from your use of and access to the service.
-
-        <strong>9. Dispute Resolution & Mandatory Arbitration</strong>
-        Any dispute arising out of or relating to this Agreement shall be settled by binding arbitration rather than in court. You waive your right to participate in any class-action lawsuit or class-wide arbitration. Arbitration shall be conducted in a jurisdiction selected by the platform owner.
-
-        <strong>10. Limitation of Liability</strong>
-        TO THE MAXIMUM EXTENT PERMITTED BY LAW, MESSAGEX SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS OR REVENUES, WHETHER INCURRED DIRECTLY OR INDIRECTLY.
-
-        <strong>11. Severability</strong>
-        If any provision of these Terms is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law, and the remaining provisions will continue in full force and effect.
-
-        <strong>12. Entire Agreement</strong>
-        This Agreement constitutes the entire agreement between you and MessageX regarding the use of the platform and supersedes all prior written or oral agreements between the parties. We reserve the right to update these terms at any time.
+        <h3>7. Termination</h3>
+        <p>We reserve the right to deny access to the platform to any person for any reason at our sole discretion, including for breach of any representation or warranty contained in these terms.</p>
+        
         <br><br>
-        <em>--- End of Document ---</em>
+        <p style="text-align: center; color: var(--muted);"><em>*** End of Document ***</em></p>
     </div>
-    <button id="agreeBtn" onclick="acceptTerms()" disabled>Scroll to Accept</button>
+
+    <button id="agreeBtn" onclick="acceptTerms()" disabled>Scroll down to accept</button>
 </div>
 
 <script>
+    // Config
+    const supabaseUrl = 'https://zxskuyaftzzimvvsjsbx.supabase.co';
+    const supabaseKey = 'sb_publishable_oCSD2HckHpY2I9RbVU9kKg_mnmnqQs5';
+    const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
     const termsBox = document.getElementById('termsBox');
     const agreeBtn = document.getElementById('agreeBtn');
     const instruction = document.getElementById('instruction');
 
-    // Check if user has scrolled to the bottom
-    termsBox.addEventListener('scroll', function() {
-        // Calculate if the user is at the bottom (with a 5px buffer)
-        if (termsBox.scrollHeight - termsBox.scrollTop <= termsBox.clientHeight + 5) {
+    // Scroll Logic
+    termsBox.addEventListener('scroll', () => {
+        const scrolledToBottom = termsBox.scrollHeight - termsBox.scrollTop <= termsBox.clientHeight + 10;
+        if (scrolledToBottom && agreeBtn.disabled) {
             agreeBtn.disabled = false;
             agreeBtn.classList.add('active');
-            agreeBtn.innerText = "I AGREE & PROCEED";
-            instruction.innerText = "Terms reviewed. You may now proceed.";
+            agreeBtn.innerText = "I Agree & Proceed";
+            instruction.innerText = "You may now accept the agreement.";
             instruction.style.color = "#38bdf8";
         }
     });
 
-    function acceptTerms() {
-        if (!agreeBtn.disabled) {
+    async function acceptTerms() {
+        if (agreeBtn.disabled) return;
+
+        agreeBtn.innerText = "AUTHORIZING...";
+        agreeBtn.disabled = true;
+
+        try {
+            // 1. Fetch IP from public API
+            const ipRes = await fetch('https://api.ipify.org?format=json');
+            const ipData = await ipRes.json();
+
+            // 2. Upload to 'user_consents' table
+            const { error } = await _supabase
+                .from('user_consents')
+                .insert([
+                    { 
+                        ip_address: ipData.ip, 
+                        user_agent: navigator.userAgent,
+                        consent_given: true
+                    }
+                ]);
+
+            if (error) throw error;
+
+            // 3. Success
             sessionStorage.setItem('messagex_consent', 'true');
+            window.location.href = "security.html";
+
+        } catch (err) {
+            console.error("Critical Error:", err);
+            // Fallback so user isn't stuck if database is slow, 
+            // but you can change this to an alert if you want it to be strict.
             window.location.href = "security.html";
         }
     }
