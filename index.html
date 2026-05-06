@@ -70,8 +70,11 @@
 
         <h3>6. Governing Law & Arbitration</h3>
         <p>This Agreement shall be governed by the laws of the jurisdiction of the Platform's choice. Any dispute shall be settled via binding individual arbitration. You hereby waive your right to a jury trial or to participate in any class-action lawsuit.</p>
-
-        <h3>7. Entire Agreement</h3>
+<h3>7. Age & Consent Provision
+    By using this Messaging Service, you represent and warrant that you are either (a) 18 years of age or older, or (b) under 18 but have obtained explicit permission from your parent or legal guardian to use this service. If you are a parent or guardian consenting to a minor's use, you agree to be bound by these terms regarding that use. If you do not meet these requirements, you must not access or use our messaging services.
+    
+</h3>
+        <h3>8. Entire Agreement</h3>
         <p>This document constitutes the entire agreement. If any part is found unenforceable, the remainder remains in full effect. We reserve the right to modify these terms without prior notice.</p>
         
         <br><br>
@@ -97,7 +100,7 @@
         if (atBottom && agreeBtn.disabled) {
             agreeBtn.disabled = false;
             agreeBtn.classList.add('active');
-            agreeBtn.innerText = "I am 18+ and I Agree";
+            agreeBtn.innerText = "I Agree";
             statusText.innerText = "Verification ready.";
             statusText.style.color = "#38bdf8";
         }
