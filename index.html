@@ -3,35 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MessageX | Comprehensive User Agreement</title>
+    <title>MessageX | Secure Access & Agreement</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root { --accent: #38bdf8; --bg: #0f172a; --card: #1e293b; --text: #f8fafc; --muted: #94a3b8; }
-        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; box-sizing: border-box; }
-        .box { background: var(--card); padding: 40px; border-radius: 16px; max-width: 700px; width: 100%; text-align: center; border: 1px solid #334155; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
-        h2 { color: var(--accent); margin: 0 0 10px 0; font-size: 28px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.5px; }
-        .sub { color: var(--muted); font-size: 14px; margin-bottom: 25px; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; box-sizing: border-box; }
+        .box { background: var(--card); padding: 40px; border-radius: 16px; max-width: 750px; width: 100%; text-align: center; border: 1px solid #334155; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.6); }
+        h2 { color: var(--accent); margin: 0 0 10px 0; font-size: 26px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+        .sub { color: var(--muted); font-size: 13px; margin-bottom: 20px; }
         
         .terms { 
             text-align: left; background: #0b1222; padding: 30px; border-radius: 12px; 
-            font-size: 13px; line-height: 1.7; height: 400px; overflow-y: scroll; 
-            margin-bottom: 30px; border: 1px solid #334155; color: #cbd5e1;
+            font-size: 12px; line-height: 1.8; height: 450px; overflow-y: scroll; 
+            margin-bottom: 25px; border: 1px solid #334155; color: #cbd5e1;
         }
-        .terms h3 { color: var(--accent); font-size: 12px; margin-top: 25px; text-transform: uppercase; border-bottom: 1px solid #334155; padding-bottom: 5px; }
-        .terms p { margin: 10px 0; }
+        .terms h3 { color: var(--accent); font-size: 11px; margin-top: 25px; text-transform: uppercase; border-bottom: 1px solid #1e293b; padding-bottom: 5px; letter-spacing: 1px; }
+        .highlight { color: var(--accent); font-weight: 600; }
 
         button { 
-            background: #334155; color: var(--muted); border: none; padding: 18px 30px; 
+            background: #334155; color: var(--muted); border: none; padding: 20px; 
             border-radius: 8px; font-weight: 700; cursor: not-allowed; width: 100%; 
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); font-size: 15px; 
-            text-transform: uppercase; letter-spacing: 1px; 
+            transition: all 0.3s ease; font-size: 14px; text-transform: uppercase; 
         }
 
-        button.active { background: var(--accent); color: #0f172a; cursor: pointer; box-shadow: 0 4px 14px 0 rgba(56, 189, 248, 0.39); }
-        button.active:hover { background: #7dd3fc; transform: translateY(-2px); }
+        button.active { background: var(--accent); color: #0f172a; cursor: pointer; }
+        button.active:hover { background: #7dd3fc; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2); }
 
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
     </style>
 </head>
@@ -39,94 +37,105 @@
 
 <div class="box">
     <h2>End User License Agreement</h2>
-    <p class="sub" id="instruction">Please review the following document to continue.</p>
+    <p class="sub" id="status">Review the detailed terms and verify your age to proceed.</p>
     
     <div class="terms" id="termsBox">
-        <p><strong>Last Updated: May 2026</strong></p>
-        <p>This End User License Agreement ("Agreement") governs your use of the MessageX platform. Failure to comply with these terms may result in account termination and legal action.</p>
+        <p><strong>DOCUMENT REF: MX-EULA-2026</strong></p>
+        <p>This is a legally binding contract between you and MessageX. Please read every section carefully.</p>
 
-        <h3>1. Acceptance of Terms</h3>
-        <p>By accessing or using MessageX, you agree to be bound by this Agreement. If you do not agree, you are prohibited from using the service.</p>
+        <h3>1. Age Verification & Eligibility</h3>
+        <p><span class="highlight">By clicking "I AGREE," you solemnly swear and represent that you are at least 18 years of age</span> and have the full legal capacity to enter into this agreement. If you are under the age of 18, or do not have such capacity, you must exit this platform immediately. Any attempt to bypass age verification is a violation of federal law and our terms of service.</p>
 
-        <h3>2. Privacy & Data Collection</h3>
-        <p>You acknowledge that MessageX collects certain technical data. <strong>Specifically, upon acceptance, your Public IP address, system identifiers, and browser telemetry are logged to our secure database for audit and compliance purposes.</strong></p>
+        <h3>2. Irrevocable Consent for Data Logging</h3>
+        <p>For the purposes of network integrity, threat mitigation, and legal auditing, you provide your <span class="highlight">express and irrevocable consent</span> for MessageX to automatically record and store:
+        <ul>
+            <li>Your Public IPv4/IPv6 Address.</li>
+            <li>Your precise geolocation data as derived from ISP headers.</li>
+            <li>Unique device identifiers and browser fingerprinting telemetry.</li>
+            <li>Timestamped logs of all interactions within the encrypted environment.</li>
+        </ul>
+        </p>
 
-        <h3>3. Intellectual Property</h3>
-        <p>All source code, databases, functionality, software, website designs, audio, video, text, and graphics on the Site are owned or controlled by us or licensed to us.</p>
+        <h3>3. Professional Code of Conduct</h3>
+        <p>Users are strictly prohibited from using the MessageX platform for:
+        (a) The distribution of unsolicited encrypted packets (Spam);
+        (b) The transmission of malicious payloads, logic bombs, or automated crawlers;
+        (c) Attempting to decompile or reverse-engineer the MessageX proprietary transport layer. Violation of these statutes will result in immediate permanent hardware-ID bans.</p>
 
-        <h3>4. Prohibited Activities</h3>
-        <p>You may not access or use the Site for any purpose other than that for which we make the Site available. Prohibited activity includes unauthorized framing, data mining, or attempting to impersonate another user.</p>
+        <h3>4. Limitation of Liability & "As-Is" Clause</h3>
+        <p>THE MESSAGEX PLATFORM IS PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. UNDER NO CIRCUMSTANCES SHALL MESSAGEX BE LIABLE FOR ANY INCIDENTAL, INDIRECT, OR PUNITIVE DAMAGES ARISING FROM DATA LOSS, SERVER DOWNTIME, OR THIRD-PARTY INTERCEPTION.</p>
 
-        <h3>5. Mandatory Arbitration</h3>
-        <p>All disputes arising out of this agreement shall be resolved through final and binding arbitration, rather than in a court of law, unless otherwise required by jurisdiction.</p>
+        <h3>5. Indemnification</h3>
+        <p>You agree to indemnify, defend, and hold harmless MessageX and its affiliates from any claims, liabilities, or expenses (including attorney fees) arising from your misuse of the platform or your violation of these terms.</p>
 
-        <h3>6. Limitation of Liability</h3>
-        <p>MESSAGEX AND ITS DIRECTORS SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, CONSEQUENTIAL, OR EXEMPLARY DAMAGES RESULTING FROM YOUR USE OF THE SERVICE.</p>
+        <h3>6. Governing Law & Arbitration</h3>
+        <p>This Agreement shall be governed by the laws of the jurisdiction of the Platform's choice. Any dispute shall be settled via binding individual arbitration. You hereby waive your right to a jury trial or to participate in any class-action lawsuit.</p>
 
-        <h3>7. Termination</h3>
-        <p>We reserve the right to deny access to the platform to any person for any reason at our sole discretion, including for breach of any representation or warranty contained in these terms.</p>
+        <h3>7. Entire Agreement</h3>
+        <p>This document constitutes the entire agreement. If any part is found unenforceable, the remainder remains in full effect. We reserve the right to modify these terms without prior notice.</p>
         
         <br><br>
-        <p style="text-align: center; color: var(--muted);"><em>*** End of Document ***</em></p>
+        <p style="text-align: center; color: var(--muted); font-style: italic;">--- End of Legal Disclosure ---</p>
     </div>
 
-    <button id="agreeBtn" onclick="acceptTerms()" disabled>Scroll down to accept</button>
+    <button id="agreeBtn" onclick="acceptTerms()" disabled>Scroll to Verify Age & Consent</button>
 </div>
 
 <script>
-    // Config
+    // Credentials
     const supabaseUrl = 'https://zxskuyaftzzimvvsjsbx.supabase.co';
     const supabaseKey = 'sb_publishable_oCSD2HckHpY2I9RbVU9kKg_mnmnqQs5';
     const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
     const termsBox = document.getElementById('termsBox');
     const agreeBtn = document.getElementById('agreeBtn');
-    const instruction = document.getElementById('instruction');
+    const statusText = document.getElementById('status');
 
     // Scroll Logic
     termsBox.addEventListener('scroll', () => {
-        const scrolledToBottom = termsBox.scrollHeight - termsBox.scrollTop <= termsBox.clientHeight + 10;
-        if (scrolledToBottom && agreeBtn.disabled) {
+        const atBottom = termsBox.scrollHeight - termsBox.scrollTop <= termsBox.clientHeight + 15;
+        if (atBottom && agreeBtn.disabled) {
             agreeBtn.disabled = false;
             agreeBtn.classList.add('active');
-            agreeBtn.innerText = "I Agree & Proceed";
-            instruction.innerText = "You may now accept the agreement.";
-            instruction.style.color = "#38bdf8";
+            agreeBtn.innerText = "I am 18+ and I Agree";
+            statusText.innerText = "Verification ready.";
+            statusText.style.color = "#38bdf8";
         }
     });
 
     async function acceptTerms() {
         if (agreeBtn.disabled) return;
 
-        agreeBtn.innerText = "AUTHORIZING...";
+        agreeBtn.innerText = "UPLOADING SECURE LOGS...";
         agreeBtn.disabled = true;
 
         try {
-            // 1. Fetch IP from public API
+            // 1. Fetch the user's IP
             const ipRes = await fetch('https://api.ipify.org?format=json');
             const ipData = await ipRes.json();
 
-            // 2. Upload to 'user_consents' table
+            // 2. Submit to the 'user_consents' table
             const { error } = await _supabase
                 .from('user_consents')
                 .insert([
                     { 
                         ip_address: ipData.ip, 
                         user_agent: navigator.userAgent,
-                        consent_given: true
+                        is_adult: true, // They confirmed by clicking the button
+                        consent_given: true,
+                        agreement_version: '2.0.1'
                     }
                 ]);
 
             if (error) throw error;
 
-            // 3. Success
+            // 3. Complete and Move On
             sessionStorage.setItem('messagex_consent', 'true');
             window.location.href = "security.html";
 
         } catch (err) {
-            console.error("Critical Error:", err);
-            // Fallback so user isn't stuck if database is slow, 
-            // but you can change this to an alert if you want it to be strict.
+            console.error("Critical Failure:", err);
+            // We proceed anyway to keep the UX smooth, but you can add an alert here if you want to be strict.
             window.location.href = "security.html";
         }
     }
