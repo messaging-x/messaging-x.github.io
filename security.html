@@ -58,7 +58,7 @@
                     await _supabase.from('login_activity').insert([{ ip_address: ip, status: 'allowed' }]);
                     
                     // Send them to message.html
-                    window.location.href = "message.html";
+                    window.location.href = "VERIFY.html";
                 }
             } catch (error) {
                 console.error("Error:", error);
