@@ -1,1 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Verification</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #121212; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .card { background: #1e1e1e; padding: 40px; border-radius: 15px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-top: 5px solid #3ecf8e; width: 320px; }
+        .code-display { font-size: 3.5rem; font-weight: bold; letter-spacing: 8px; color: #3ecf8e; margin: 25px 0; background: #252525; padding: 15px; border-radius: 10px; border: 1px solid #333; }
+        .hidden { display: none; }
+        .loader { border: 2px solid #333; border-top: 2px solid #3ecf8e; border-radius: 50%; width: 16px; height: 16px; animation: spin 1s linear infinite; display: inline-block; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+    <div id="authCard" class="card hidden">
+        <h2 style="margin-top: 0;">Verification</h2>
+        <p>Give this code to the admin:</p>
+        <div id="codeDisplay" class="code-display">------</div>
+        <div style="color: #888;"><div class="loader"></div> Waiting for approval...</div>
+    </div>
+
+    <div id="checkingMsg">
+        <div class="loader"></div> Validating session...
+    </div>
+
+    <script>
+        const SUPABASE_URL = 'https://bescumcfyltymxlkbhqw.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_dlN2AWz8yK4LAWilB9smVg_YJ4fhomK';
+        const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        async function checkSession() {
+            const savedCode = localStorage.getItem('approved_auth_code');
+
+            if (savedCode) {
+                // Check if this code is actually approved in the DB
+                const { data, error } = await sb
+                    .from('auth_codes')
+                    .select('status')
+                    .eq('code', savedCode)
+                    .eq('status', 'approved')
+                    .single();
+
+                if (data) {
+                    // Code is valid and approved, skip to message.html
+                    window.location.href = 'message.html';
+                    return;
+                }
+            }
+
+            // If no saved code or code was invalid/deleted, show the UI and generate new one
+            showNewCodeUI();
+        }
+
+        async function showNewCodeUI() {
+            document.getElementById('checkingMsg').classList.add('hidden');
+            document.getElementById('authCard').classList.remove('hidden');
+
+            const generatedCode = Math.floor(100000 + Math.random() * 900000).toString();
+            document.getElementById('codeDisplay').innerText = generatedCode;
+
+            // 1. Insert new pending request
+            await sb.from('auth_codes').insert([{ code: generatedCode, status: 'pending' }]);
+
+            // 2. Listen for Realtime approval
+            sb.channel('any')
+                .on('postgres_changes', { 
+                    event: 'UPDATE', 
+                    schema: 'public', 
+                    table: 'auth_codes', 
+                    filter: `code=eq.${generatedCode}` 
+                }, (payload) => {
+                    if (payload.new.status === 'approved') {
+                        // SAVE TO LOCALSTORAGE before redirecting
+                        localStorage.setItem('approved_auth_code', generatedCode);
+                        window.location.href = 'message.html';
+                    }
+                })
+                .subscribe();
+        }
+
+        checkSession();
+    </script>
+</body>
+</html>
 
